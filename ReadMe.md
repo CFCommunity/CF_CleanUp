@@ -34,7 +34,6 @@ Think of it this way: If you only ever sweep dirt into the corner of your house,
 
 We have too many headless functions. Instead of 24 headless `ArrayX()` functions, we should have ~24 `arrayObj.x()` methods. The same goes for structures, strings, etc.
 
- * Arrays
  * ArrayAppend
  * ArrayAvg
  * ArrayClear
