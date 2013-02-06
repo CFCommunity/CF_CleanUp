@@ -102,4 +102,4 @@ Being properly implemented into the CFScript language, instead of deferring to C
         where age >= 80 and age <= 89
     ", {}, { dbType: "query" });
 
-We believe that this syntax is easy to remember, terse, and just as intuitive as the `<cfquery>` tag.
+We believe that this syntax is easy to remember, terse, and just as intuitive as the `<cfquery>` tag. There is no need to call `execute()`, and the result is always returned.
