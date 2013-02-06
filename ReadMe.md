@@ -86,20 +86,24 @@ Our proposal is to remove Query.cfc and properly add it to the language. Our pro
 
 Example:
 
-    result = query(
-        "insert into myTable (name) values (:name)",
-        { name: "Bob the Builder" },
-        { datasource: "myDb", username: "db_user", password: "db_pass" }
-    );
-    inserted_id = result.IdentityCol;
+```cfs
+result = query(
+    "insert into myTable (name) values (:name)",
+    { name: "Bob the Builder" },
+    { datasource: "myDb", username: "db_user", password: "db_pass" }
+);
+inserted_id = result.IdentityCol;
+```
 
 Being properly implemented into the CFScript language, instead of deferring to CFCs, should also mean that this syntax would properly have access to available-scoped query objects:
 
-    variables.people = query("select name, age from person");
+```cfs
+variables.people = query("select name, age from person");
 
-    variables.octogenarians = query("
-        select name, age from variables.people
-        where age >= 80 and age <= 89
-    ", {}, { dbType: "query" });
+variables.octogenarians = query("
+    select name, age from variables.people
+    where age >= 80 and age <= 89
+", {}, { dbType: "query" });
+```
 
 We believe that this syntax is easy to remember, terse, and just as intuitive as the `<cfquery>` tag. There is no need to call `execute()`, and the result is always returned.
