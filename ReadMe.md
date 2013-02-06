@@ -79,26 +79,27 @@ The current problem with CFScript queries is that the syntax is awkward and they
 
 Our proposal is to remove Query.cfc and properly add it to the language. Our proposed syntax would be:
 
-[result =] query( SQL, parameters, options );
+    [result =] query( SQL, parameters, options );
 
-parameters: {id: 1, lastName: 'foo'}
-options: {cachedWithin: createTimespan(...), ...}
+    parameters: {id: 1, lastName: 'foo'}
+    options: {cachedWithin: createTimespan(...), ...}
 
 Example:
 
-result = query(
-    "insert into myTable (name) values (:name)",
-    { name: "Bob the Builder" },
-    { datasource: "myDb", username: "db_user", password: "db_pass" }
-);
-inserted_id = result.IdentityCol;
+    result = query(
+        "insert into myTable (name) values (:name)",
+        { name: "Bob the Builder" },
+        { datasource: "myDb", username: "db_user", password: "db_pass" }
+    );
+    inserted_id = result.IdentityCol;
 
 Being properly implemented into the CFScript language, instead of deferring to CFCs, should also mean that this syntax would properly have access to available-scoped query objects:
 
-variables.people = query("select name, age from person");
-variables.octogenarians = query("
-    select name, age from variables.people
-    where age >= 80 and age <= 89
-", {}, { dbType: "query" });
+    variables.people = query("select name, age from person");
+
+    variables.octogenarians = query("
+        select name, age from variables.people
+        where age >= 80 and age <= 89
+    ", {}, { dbType: "query" });
 
 We believe that this syntax is easy to remember, terse, and just as intuitive as the `<cfquery>` tag.
