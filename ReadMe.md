@@ -26,11 +26,11 @@ Some of the proposed changes are drastic, and would break a lot of backward comp
 
 Think of it this way: If you only ever sweep dirt into the corner of your house, the house will never be clean. You've got to pick it up and throw it out at some point.
 
-## Proposals
+# Proposals
 
-### Organizational Changes
+## Organizational Changes
 
-#### Headless Functions
+### Headless Functions
 
 We have too many headless functions. Instead of 24 headless `ArrayX()` functions, we should have ~24 `arrayObj.x()` methods. The same goes for structures, strings, etc.
 
@@ -63,17 +63,17 @@ Perhaps `myArray.length` would be better implemented as a property than a method
 
 Headless functions are not bad by definition, but making **all** functions headless is a bad choice.
 
-### Implementation Changes
+## Implementation Changes
 
-#### CFML
+### CFML
 
-##### CFQuery
+#### CFQuery
 
 Inserts that result in an auto-generated Identity column value should all return the created value in the same result key name. Currently every database platform has its own key (e.g. IDENTITYCOL for MSSQL, and GENERATED_KEY for MySQL), which is problematic for portable software (think blogs, frameworks, etc) as they have to have switches to deal with all possible cases. If the key was always the same name regardless of the DB platform, it would be easier for all developers to work with, and projects would be more portable. See also, [Bug #3490074](https://bugbase.adobe.com/index.cfm?event=bug&id=3490074).
 
-#### CFScript
+### CFScript
 
-##### Queries
+#### Queries
 
 The current problem with CFScript queries is that the syntax is awkward and they don't behave the same as their tag counterparts. For example, to do a Query of Queries, you've got to pass the existing Query resultset into the new Query object so that it can be referenced. These are symptoms of a larger problem: While implementing some tags as CFC's is a fine stop-gap, Queries are simply not a good fit.
 
