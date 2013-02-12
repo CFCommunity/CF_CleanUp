@@ -69,6 +69,16 @@ Headless functions are not bad by definition, but making **all** functions headl
 
 Inserts that result in an auto-generated Identity column value should all return the created value in the same result key name. Currently every database platform has its own key (e.g. IDENTITYCOL for MSSQL, and GENERATED_KEY for MySQL), which is problematic for portable software (think blogs, frameworks, etc) as they have to have switches to deal with all possible cases. If the key was always the same name regardless of the DB platform, it would be easier for all developers to work with, and projects would be more portable. See also, [Bug #3490074](https://bugbase.adobe.com/index.cfm?event=bug&id=3490074).
 
+> #### According to a commenter on the ER linked above, this feature exists but is undocumented:
+> ---
+> @Adobe, can result.GENERATEDKEY *please* be documented? It has been mentioned many times by commenters on the cfquery docs, but the comments end up being deleted and the change is never implemented.
+>
+> @Adam, result.GENERATEDKEY is the key you're looking for.
+>
+> ---
+>
+> If this is true, **_please just update the documentation!_**
+
 ## Implementation Changes: CFScript
 
 ### Queries
