@@ -105,3 +105,7 @@ variables.octogenarians = query("
 ```
 
 We believe that this syntax is easy to remember, terse, and just as intuitive as the `<cfquery>` tag. There is no need to call `execute()`, and the result is always returned.
+
+## Additions
+
+* Function `valueArray` that would work like `valueList` but return an array instead of a list. [ER #3499033](https://bugbase.adobe.com/index.cfm?event=bug&id=3499033)
